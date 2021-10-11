@@ -4,7 +4,7 @@ program main
     integer, parameter :: num_samples = 10000
     double precision :: x
     double precision, parameter :: x_start = 0, x_end = 10
-    double precision, parameter :: interval = x_end / num_samples
+    double precision, parameter :: interval = (x_end - x_start) / num_samples
 
     do n = 1, num_samples
         x = x_start + interval * n

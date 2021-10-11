@@ -1,7 +1,7 @@
 program main
     integer(16) :: n
-    double precision :: OnePlusEpsilon
-    !real :: OnePlusEpsilon
+    !double precision :: OnePlusEpsilon
+    real :: OnePlusEpsilon
     do n = 1, huge(n)
         OnePlusEpsilon = 1d0 + 2d0**(-n)
         if (OnePlusEpsilon == 1d0) exit
