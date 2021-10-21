@@ -1,7 +1,11 @@
 FILE2-3 = differential.f90 main2-3.f90
+FILE3-A = differential.f90 main3-a.f90
 
 2-3: $(FILE2-3)
 	gfortran $(FILE2-3) -o main2-3.o
+
+3-a: $(FILE3-A)
+	gfortran $(FILE3-A) -o main3-a.o
 
 clean:
 	rm *.o *.mod
