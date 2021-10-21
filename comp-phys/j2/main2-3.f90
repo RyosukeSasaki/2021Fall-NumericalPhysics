@@ -2,13 +2,13 @@ program main
     use differential
     implicit none
     double precision, parameter :: t_begin = 0.0, t_end = 10.0, x0 = 1.0
-    double precision, parameter :: tau = 0.01, interval = 0.1
+    double precision, parameter :: tau = 0.001, interval = 0.1
     double precision :: t = 0, x = x0
     
     do while (t < t_end)
         x = runge_kutta(f, x, t, t + interval, tau)
         t = t + interval
-        write(*, *) t, x
+        write(*, *) t, x, x_true(t)
     end do
 
     contains
@@ -19,4 +19,11 @@ program main
 
         f = x*cos(t)
     end function f
+    function x_true(t)
+        implicit none
+        double precision :: x_true
+        double precision, intent(in) :: t
+        
+        x_true = exp(sin(t))
+    end function x_true
 end program main
