@@ -14,7 +14,8 @@ module differential
         INTEGER :: i
         INTEGER, PARAMETER :: order = 4
         INTEGER, INTENT(IN) :: n
-        DOUBLE PRECISION, INTENT(in) :: init(:), t_begin, t_end, tau
+        DOUBLE PRECISION, INTENT(in) :: init(:), t_end, tau
+        DOUBLE PRECISION, INTENT(INOUT) :: t_begin
         DOUBLE PRECISION :: runge_kutta(n), x(n), t, s(n), delta(n)
         DOUBLE PRECISION :: a(order), b(order)
         a(1)=0.0; a(2)=0.5; a(3)=0.5; a(4)=1.0
@@ -22,13 +23,15 @@ module differential
         x(:) = init(:)
         t = t_begin
 
-        do while (t < t_end)
+        do while (t <= t_end)
             s = 0; delta = 0
+            t_begin = t
             do i = 1, order
                 delta = arg(t+a(i)*tau, x(:) + a(i) * delta, n)*tau
                 s(:) = s(:) + b(i) * delta
             end do
-            x(:) = x(:) + s(:); t = t + tau
+            x(:) = x(:) + s(:)
+            t = t + tau
         end do
         runge_kutta(:) = x(:)
     end function runge_kutta
