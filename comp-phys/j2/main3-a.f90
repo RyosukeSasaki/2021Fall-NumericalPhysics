@@ -1,20 +1,16 @@
 program main
     use differential
     implicit none
-    DOUBLE PRECISION, PARAMETER :: t_begin = 0.0, t_end = 8.0
-    DOUBLE PRECISION, PARAMETER :: interval = 8.0
-    DOUBLE PRECISION :: t = 0.0, x(2), tau = 0.01
+    DOUBLE PRECISION, PARAMETER :: t_begin = 0d0
+    DOUBLE PRECISION :: t = 0d0, x(2), tau = 0.01d0, t_end = 8d0
     INTEGER :: n
-    x(1) = 0.0; x(2) = 1.0
+    x(1) = 0d0; x(2) = 1d0
 
     do n = 2, 12
-        t = 0.0
-        x(1) = 0.0; x(2) = 1.0
-        tau = 1.0 / 2.0**n
-        do while (t < t_end)
-            x = runge_kutta(f, 2, x, t, t + interval, tau)
-            !WRITE(*, *) t, x(1), x_true(t)
-        end do
+        t = 0d0
+        tau = 1d0 / 2d0**n
+        x(1) = 0d0; x(2) = 1d0
+        x = runge_kutta(f, 2, x, t, t + t_end, tau)
         WRITE(*, *) tau, t, abs(x(1) - x_true(t)), abs(x(2) - v_true(t))
     end do
 
