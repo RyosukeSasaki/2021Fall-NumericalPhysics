@@ -2,7 +2,7 @@ program main
     use differential
     implicit none
     DOUBLE PRECISION, PARAMETER :: t_begin = 0.0, t_end = 8.0
-    DOUBLE PRECISION, PARAMETER :: interval = 0.5
+    DOUBLE PRECISION, PARAMETER :: interval = 8.0
     DOUBLE PRECISION :: t = 0.0, x(2), tau = 0.01
     INTEGER :: n
     x(1) = 0.0; x(2) = 1.0
@@ -19,11 +19,12 @@ program main
     end do
 
     contains
-    function f(tp, xp, n)
+    function f(tp, xp, n, const)
         implicit none
         INTEGER, INTENT(IN) :: n
         DOUBLE PRECISION :: f(n)
         DOUBLE PRECISION, INTENT(IN) :: xp(:), tp
+        DOUBLE PRECISION, OPTIONAL :: const(:)
         f(1) = xp(2)
         f(2) = -xp(1)
     end function f

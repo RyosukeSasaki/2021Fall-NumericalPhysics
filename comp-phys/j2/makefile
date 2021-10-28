@@ -9,7 +9,7 @@ FILE3-B = differential.f90 main3-b.f90
 	gfortran $(FILE3-A) -o main3-a.o
 
 3-b: $(FILE3-B)
-	gfortran $(FILE3-B) -o main3-a.o
+	gfortran $(FILE3-B) -o main3-b.o
 
 clean:
 	rm *.o *.mod
