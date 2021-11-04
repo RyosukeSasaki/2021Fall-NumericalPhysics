@@ -9,10 +9,10 @@ program main
     !const(:) : (Q, G, Omega)
     !xp(:) : (omega, theta, phi)
     const(1) = 2d0; const(3) = 2d0/3d0;
-    t_end = 150d0*2d0*pi/const(3)
+    t_end = 1050d0*2d0*pi/const(3)
     tau = 2d0*pi/const(3)*10d0**(-3d0)
 
-    const(2) = 0.9
+    const(2) = 1.5d0
     do while (t <= 50d0*2d0*pi/const(3))
         x = runge_kutta(f, 3, x, t, tau, const, boundary)
     end do
