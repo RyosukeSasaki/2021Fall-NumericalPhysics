@@ -28,10 +28,9 @@ set ylabel "Error"
 n=1
 a=100
 b=0.001
-err_x(x) = a*x**n + b
+err_x(x) = a*x**b
 
 #fit err_x(x) "3-a-2.dat" u 1:3 via a, b, n
 
-plot "3-a-2.dat" every 1 u 1:3 title "Error $x$",\
-#"3-a-2.dat" every 1 u 1:4 title "Error $y$",\
-#err_x(x)
+plot "3-a-2.dat" every 1 u 1:2 title "Numerical",\
+"3-a-2.dat" every 1 u 1:3 title "True"

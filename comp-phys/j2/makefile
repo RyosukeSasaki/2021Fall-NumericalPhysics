@@ -11,5 +11,9 @@ FILE3-B = differential.f90 main3-b.f90
 3-b: $(FILE3-B)
 	gfortran $(FILE3-B) -o main3-b.o
 
+run:
+	@make 3-a
+	./main3-a.o > 3-a-2.dat
+
 clean:
 	rm *.o *.mod
