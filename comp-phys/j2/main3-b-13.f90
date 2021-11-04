@@ -12,7 +12,7 @@ program main
     t_end = 1050d0*2d0*pi/const(3)
     tau = 2d0*pi/const(3)*10d0**(-3d0)
 
-    const(2) = 1.5d0
+    const(2) = 1.47d0
     do while (t <= 50d0*2d0*pi/const(3))
         x = runge_kutta(f, 3, x, t, tau, const, boundary)
     end do

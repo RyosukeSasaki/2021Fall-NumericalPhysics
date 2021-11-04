@@ -1,6 +1,6 @@
 reset
 set terminal tikz size 10cm, 10cm
-set output "3-b-11.tex"
+set output "3-b-41.tex"
 #set terminal wxt
 set size square
 set parametric
@@ -27,4 +27,4 @@ set mztics 2
 #set key width -1
 #set key spacing 1.5
 
-splot "3-b-11.dat" notitle
+splot "3-b-41.dat" notitle

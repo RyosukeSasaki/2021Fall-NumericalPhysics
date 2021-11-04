@@ -1,7 +1,7 @@
 reset
-#set terminal tikz size 10cm, 10cm
-#set output "3-b-22.tex"
-set terminal wxt
+set terminal tikz size 10cm, 10cm
+set output "3-b-42.tex"
+#set terminal wxt
 set size square
 set parametric
 
@@ -23,4 +23,4 @@ set mytics 2
 #set key width -1
 #set key spacing 1.5
 
-plot "3-b-22.dat" u 2:3 notitle
+plot "3-b-41.dat" u 2:3 notitle
