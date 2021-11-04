@@ -5,21 +5,23 @@ program main
     DOUBLE PRECISION :: t_begin = 0d0, t_end
     DOUBLE PRECISION :: tau, t = 0d0, x(3) = 0d0
     DOUBLE PRECISION :: const(3)
-    DOUBLE PRECISION :: interval
+    INTEGER :: interval = 10, i = 0
     !const(:) : (Q, G, Omega)
     !xp(:) : (omega, theta, phi)
     const(1) = 2d0; const(3) = 2d0/3d0;
-    t_end = 1050d0*2d0*pi/const(3)
+    t_end = 150d0*2d0*pi/const(3)
     tau = 2d0*pi/const(3)*10d0**(-3d0)
-    interval = 2d0*pi/const(3)
 
     const(2) = 0.9
     do while (t < 50d0*2d0*pi/const(3))
-        x = runge_kutta(f, 3, x, t, t + interval, tau, const, boundary)
+        x = runge_kutta(f, 3, x, t, tau, const, boundary)
     end do
-    do while (t < t_end)
-        x = runge_kutta(f, 3, x, t, t + interval, tau, const, boundary)
-        WRITE(*, *) x(3), x(2), x(1)
+    do while (t <= t_end)
+        x = runge_kutta(f, 3, x, t, tau, const, boundary)
+        i = i + 1
+        if (mod(i, interval) == 0) then
+            WRITE(*, *) x(3), x(2), x(1)
+        end if
     end do
     
     contains

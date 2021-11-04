@@ -1,7 +1,7 @@
 reset
-#set terminal tikz size 10cm, 10cm
-#set output "3-a-2.tex"
-set terminal wxt
+set terminal tikz size 10cm, 10cm
+set output "3-a-2.tex"
+#set terminal wxt
 set size square
 
 set xlabel "$\\tau$"
@@ -23,14 +23,14 @@ set ylabel "Error"
 #set key width 1
 #set key spacing 1.5
 
-#set logscale xy
+set logscale xy
 
-n=1
-a=100
-b=0.001
-err_x(x) = a*x**b
+n=4
+a=0.001
+err_x(x) = a*x**n
 
-#fit err_x(x) "3-a-2.dat" u 1:3 via a, b, n
+fit [0.0019:0.01] err_x(x) "3-a-2.dat" u 1:3 via a, n
 
-plot "3-a-2.dat" every 1 u 1:2 title "Numerical",\
-"3-a-2.dat" every 1 u 1:3 title "True"
+plot "3-a-2.dat" every 1 u 1:3 title "Error $x$",\
+err_x(x)
+#"3-a-2.dat" every 1 u 1:4 title "Error $v$",\
