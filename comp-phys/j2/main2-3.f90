@@ -7,17 +7,18 @@ program main
     x(:) = x0(:)
     
     do while (t < t_end)
-        x = runge_kutta(f, 1, x, t, t + interval, tau)
+        x = runge_kutta(f, 1, x, t, tau)
         t = t + interval
         WRITE(*, *) t, x(1), x_true(t)
     end do
 
     contains
-    function f(tp, xp, n)
+    function f(tp, xp, n, const)
         implicit none
         INTEGER, INTENT(IN) :: n
         DOUBLE PRECISION :: f(n)
         DOUBLE PRECISION, INTENT(in) :: tp, xp(:)
+        DOUBLE PRECISION, OPTIONAL :: const(:)
 
         f(1) = xp(1)*cos(tp)
     end function f

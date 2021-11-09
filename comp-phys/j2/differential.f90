@@ -2,6 +2,7 @@ module differential
     implicit none
      
     contains
+    !runge_kuttaの計算を1ステップ進める
     !arg:微分方程式; n:連立する数; init:初期値; t_begin:計算開始; t_end:計算終了; tau:刻み幅;
     !const:定数(optional); boundary:境界条件(optional)
     function runge_kutta(arg, n, init, t_begin, tau, const, boundary)
@@ -40,9 +41,9 @@ module differential
         do i = 1, order
             !optionalの定数が与えられている場合はそれを含む計算を実行
             if (PRESENT(const)) then 
-                delta = arg(t+a(i)*tau, x(:) + a(i) * delta, n, const)*tau
+                delta(:) = arg(t+a(i)*tau, x(:) + a(i) * delta, n, const)*tau
             else
-                delta = arg(t+a(i)*tau, x(:) + a(i) * delta, n)*tau
+                delta(:) = arg(t+a(i)*tau, x(:) + a(i) * delta, n)*tau
             end if
             s(:) = s(:) + b(i) * delta(:)
         end do
@@ -51,7 +52,7 @@ module differential
         t_begin = t
         !optionalの境界条件が与えられている場合はそれを考慮
         if (PRESENT(boundary)) then
-            x = boundary(x, n)
+            x(:) = boundary(x, n)
         end if
         runge_kutta(:) = x(:)
     end function runge_kutta

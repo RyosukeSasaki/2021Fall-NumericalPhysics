@@ -1,27 +1,19 @@
 program main
     use differential
     implicit none
-    DOUBLE PRECISION :: t = 0d0, x(2), tau = 0.01d0, t_end = 10d0
+    DOUBLE PRECISION :: t = 0d0, x(2), tau = 0.01d0, t_end = 8d0
     INTEGER :: n, i
     x(1) = 0d0; x(2) = 1d0
 
-    !do n = 2, 12
-    !    t = 0d0
-    !    tau = 1d0 / 2d0**dble(n)
-    !    x(1) = 0d0; x(2) = 1d0
-    !    do while (t < t_end)
-    !        x = runge_kutta(f, 2, x, t, tau)
-    !    end do
-    !    WRITE(*, *) tau, t, abs(x(1) - x_true(t)), abs(x(2) - v_true(t))
-    !end do
-    do while (t <= t_end)
-        x = runge_kutta(f, 2, x, t, tau)
-        i = i + 1
-        if(mod(i, 10) == 0) then
-            WRITE(*, *) t, x(1), x_true(t), x(2), v_true(t)
-        end if
-    end do
-    
+    do n = 2, 12
+        t = 0d0
+        tau = 1d0 / 2d0**dble(n)
+        x(1) = 0d0; x(2) = 1d0
+        do while (t < t_end)
+            x = runge_kutta(f, 2, x, t, tau)
+        end do
+        WRITE(*, *) tau, t, abs(x(1) - x_true(t)), abs(x(2) - v_true(t))
+    end do    
 
     contains
     function f(tp, xp, n, const)
