@@ -20,86 +20,94 @@ program wave
   !======================================================================-
   !  nyuuryoku
   !======================================================================-
-  iok=0
-  do while (iok.eq.0)
-    write(0,*) ' input Jmax,' &
-         ,' where Jmax must be even and 2<= Jmax <=',idim-1,'.'
-    read(*,*) jmax
-    if (jmax.le.0) then
-      write(0,*)'error: Jmax must be positive.'
-    else if (jmax.ge.idim) then
-      write(0,*)'error: Jmax must be less than',idim,'.'
-    else if (mod(jmax,2).ne.0) then
-      write(0,*) 'error: Jmax must be even.'
-    else
-      iok=1
-    endif
-  enddo
+  !iok=0
+  !do while (iok.eq.0)
+  !  write(0,*) ' input Jmax,' &
+  !       ,' where Jmax must be even and 2<= Jmax <=',idim-1,'.'
+  !  read(*,*) jmax
+  !  if (jmax.le.0) then
+  !    write(0,*)'error: Jmax must be positive.'
+  !  else if (jmax.ge.idim) then
+  !    write(0,*)'error: Jmax must be less than',idim,'.'
+  !  else if (mod(jmax,2).ne.0) then
+  !    write(0,*) 'error: Jmax must be even.'
+  !  else
+  !    iok=1
+  !  endif
+  !enddo
+  !!
+  !iok=0
+  !do while (iok.eq.0)
+  !  write(0,*) ' input Nmax(> 0).'
+  !  read(*,*) nmax
+  !  if(nmax.le.0) then
+  !    write(0,*)'error: Nmax must be positive.'
+  !  else
+  !    iok=1
+  !  endif
+  !enddo
+  !!
+  !iok=0
+  !do while (iok.eq.0)
+  !  write(0,*) ' input N1max (> 0).'
+  !  read(*,*) n1max
+  !  if(n1max.le.0) then
+  !    write(0,*)'error: N1max must be positive.'
+  !  else
+  !    iok=1
+  !  endif
+  !enddo
+  !!
+  !!
+  !iok=0
+  !do while (iok.eq.0)
+  !  write(0,*)'  input L(>0).'
+  !  read(*,*) rl
+  !  if(rl.le.0.0d0) then
+  !    write(0,*)'error: L must be positive.'
+  !  else
+  !    iok=1
+  !  endif
+  !enddo
+  !!
+  !iok=0
+  !do while (iok.eq.0)
+  !  write(0,*)'  input sig(>0).'
+  !  read(*,*) sig
+  !  if(sig.le.0.0d0) then
+  !    write(0,*)'error: sig must be positive.'
+  !  else
+  !    iok=1
+  !  endif
+  !enddo
+  !!
+  !write(0,*)'  input k0.'
+  !read(*,*) rk
+  !write(0,*)'  input x0.'
+  !read(*,*) x0
+  !!
+  !iok=0
+  !do while (iok.eq.0)
+  !  write(0,*)'  input dt.'
+  !  read(*,*) dt
+  !  if(dt.le.0.0d0) then
+  !    write(0,*)'error: dt must be positive.'
+  !  else
+  !    iok=1
+  !  endif
+  !enddo
   !
-  iok=0
-  do while (iok.eq.0)
-    write(0,*) ' input Nmax(> 0).'
-    read(*,*) nmax
-    if(nmax.le.0) then
-      write(0,*)'error: Nmax must be positive.'
-    else
-      iok=1
-    endif
-  enddo
-  !
-  iok=0
-  do while (iok.eq.0)
-    write(0,*) ' input N1max (> 0).'
-    read(*,*) n1max
-    if(n1max.le.0) then
-      write(0,*)'error: N1max must be positive.'
-    else
-      iok=1
-    endif
-  enddo
-  !
+  Nmax = 100
+  rl = 4d0
+  sig = 0.1d0
+  rk = 20d0
+  x0 = -0.5d0
+  jmax = 2*int(rl)*64
+  dt = 1d0*10d0**(-5d0)
+  n1max = int(0.05d0/dt/dble(nmax))
   write(*,'(''# Jmax  = '',i12)') jmax
   write(*,'(''# Nmax  = '',i12)') nmax
   write(*,'(''# N1max = '',i12)') n1max
-  !
-  iok=0
-  do while (iok.eq.0)
-    write(0,*)'  input L(>0).'
-    read(*,*) rl
-    if(rl.le.0.0d0) then
-      write(0,*)'error: L must be positive.'
-    else
-      iok=1
-    endif
-  enddo
-  !
-  iok=0
-  do while (iok.eq.0)
-    write(0,*)'  input sig(>0).'
-    read(*,*) sig
-    if(sig.le.0.0d0) then
-      write(0,*)'error: sig must be positive.'
-    else
-      iok=1
-    endif
-  enddo
-  !
-  write(0,*)'  input k0.'
-  read(*,*) rk
-  write(0,*)'  input x0.'
-  read(*,*) x0
-  !
-  iok=0
-  do while (iok.eq.0)
-    write(0,*)'  input dt.'
-    read(*,*) dt
-    if(dt.le.0.0d0) then
-      write(0,*)'error: dt must be positive.'
-    else
-      iok=1
-    endif
-  enddo
-  !
   write(*,'(''# L     = '',e18.8e3)') rl
   write(*,'(''# sig   = '',e18.8e3)') sig
   write(*,'(''# k0    = '',e18.8e3)') rk
