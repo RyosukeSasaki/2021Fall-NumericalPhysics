@@ -1,0 +1,5 @@
+\documentclass[dvipdfmx]{standalone}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\begin{document}
