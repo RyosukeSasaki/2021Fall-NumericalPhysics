@@ -34,7 +34,3 @@ plot \
 "4af.dat" u 1:3 title "厳密解",\
 "../out/4af.dat" u (1/$1)**2*10**4:3 title "数値解",\
 f(x) title "Fitting Line"\
-
-set output
-set terminal wxt
-replot

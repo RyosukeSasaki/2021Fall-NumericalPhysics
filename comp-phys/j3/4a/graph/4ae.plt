@@ -1,7 +1,8 @@
-#set terminal tikz size 10cm, 8cm
-#set output "4ae2.tex"
-set terminal wxt
-set size square
+reset
+set terminal tikz size 10cm, 8cm
+set output "4ae2.tex"
+#set terminal wxt
+#set size square
 
 set xlabel "$t$"
 #set ylabel "$\\langle x\\rangle$"

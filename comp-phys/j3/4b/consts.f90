@@ -1,0 +1,13 @@
+module consts
+    implicit none
+    INTEGER, PARAMETER :: x_division(3) = (/64, 128, 256/)
+    DOUBLE PRECISION, PARAMETER :: L = 5d0
+    DOUBLE PRECISION, PARAMETER :: sigma_array(3) = (/0.4d0,06d0,0.8d0/)
+    DOUBLE PRECISION, PARAMETER :: k0_array(7) = (/30d0,35d0,40d0,45d0,50d0,55d0,60d0/)
+    DOUBLE PRECISION, PARAMETER :: x0 = -L/2
+    DOUBLE PRECISION, PARAMETER :: dt = 1d0*10d0**(-5d0)
+    DOUBLE PRECISION, PARAMETER :: x1 = 0d0
+    DOUBLE PRECISION, PARAMETER :: x2 = 1d0
+    DOUBLE PRECISION, PARAMETER :: V0 = 800d0
+
+end module consts

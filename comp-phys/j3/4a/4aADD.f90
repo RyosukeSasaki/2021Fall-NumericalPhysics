@@ -70,7 +70,6 @@ program wave
   enddo
   !
   n=0
-  write(*,'( ''#''/ ''# time'',12x,''  <x> '',12x, ''  <(x-<x>)**2>'' )')
   !======================================================================-
   ! shuukei
   !======================================================================-
@@ -88,7 +87,10 @@ program wave
   do j=2,jmax
     xs=xs+((x(j)-xav)**2)*r(j)*dx
   enddo
-  write(*,'(3e18.8e3)') dt*n1max*n,xav,xs
+  write(*,'( ''#''/ ''# x'',12x,''  r(j) '',12x, ''  real'',12x, ''  aimag'' )')
+  do j=1, jmax+1
+    write(*,'(4e18.8e3)') x(j), r(j), real(cp(j)), aimag(cp(j))
+  end do
   !
   cdp(:)=0.0d0
   !======================================================================-
@@ -129,7 +131,11 @@ program wave
     do j=2,jmax
       xs=xs+((x(j)-xav)**2)*r(j)*dx
     enddo
-    write(*,'(3e18.8e3)') dt*n1max*n,xav,xs
+    !write(*,'(3e18.8e3)') dt*n1max*n,xav,xs
   enddo
+  !write(*,'( ''#''/ ''# x'',12x,''  r(j) '',12x, ''  real'',12x, ''  aimag'' )')
+  !do j=1, jmax+1
+  !  write(*,'(4e18.8e3)') x(j), r(j), real(cp(j)), aimag(cp(j))
+  !end do
   !======================================================================-
 end program wave
