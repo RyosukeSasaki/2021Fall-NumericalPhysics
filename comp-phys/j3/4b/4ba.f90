@@ -9,14 +9,14 @@ program main
     DOUBLE PRECISION :: sigma,k0,dx,w,t
     DOUBLE PRECISION :: r(idim),x(idim),V(idim)=0d0
     
-    do s=1,1
+    do s=2,2
         sigma = sigma_array(s)
         do q=1,1
             k0 = k0_array(q)
             nmax = int(3d0/2d0*L/k0/dt)
             write(*,'(''# sig   = '',e18.8e3)') sigma
             write(*,'(''# k0    = '',e18.8e3)') k0
-            do p=1,3
+            do p=1,7
                 jmax = 2*int(L)*x_division(p)
                 dx = 2.0d0*L/dble(jmax)
                 w = 0.5d0/dx**2
@@ -25,21 +25,22 @@ program main
         end do
     enddo
 
+
     contains
     subroutine main_roop()
         implicit none
         INTEGER :: j,n,n1
         DOUBLE PRECISION, PARAMETER :: eps = 2d0**(-52)
         DOUBLE PRECISION :: sum,rnf
-        !======================================================================-
+        !========================================================-
         ! generate grid points
-        !======================================================================-
+        !========================================================-
         do j=1,jmax+1
             x(j)=dx*dble(j-1)-L
         enddo
-        !======================================================================-
+        !========================================================-
         ! generate potential array
-        !======================================================================-
+        !========================================================-
         do j=2,jmax
             if (abs(x(j)-x1).le.eps) then
                 V(j) = V0*0.5d0
@@ -61,9 +62,9 @@ program main
             j = j - 1
         end do
         j2 = j
-        !======================================================================-
+        !========================================================-
         ! inital condition
-        !======================================================================-
+        !========================================================-
         sum = 0d0
         n = 0
         n1 = 0
@@ -78,9 +79,9 @@ program main
             cp(j)=rnf*cp(j)
         enddo
         !call output_xav_xs()
-        !======================================================================-
+        !========================================================-
         ! time evolution
-        !======================================================================-
+        !========================================================-
         do n=1,nmax
             cp = runge_kutta(f, idim, cp, t, dt)
             !call output_xav_xs()
@@ -88,8 +89,8 @@ program main
         do j=2,jmax
             r(j) = cp(j)*dconjg(cp(j))
         enddo
-        !call output_wave()
-        call output_reflect_ratio()
+        call output_wave()
+        !call output_reflect_ratio()
     end subroutine main_roop
     
     subroutine output_reflect_ratio()
