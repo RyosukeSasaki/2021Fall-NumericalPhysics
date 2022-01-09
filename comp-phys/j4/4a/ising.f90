@@ -14,45 +14,46 @@ program ising
   real(kind=8):: temp &
        ,trprob(-nnno:nnno)
   !
-  integer:: no,lsize1,i,ix,iy,nm,n,nb,ie,iene,imag
+  integer:: no,lsize1,i,ix,iy,nm,n,nb,ie,iene,imag,j
   real(kind=8):: de,amag,amag2,aene,aene2,ave,avc,dene,avm,avx,dmag,rnd
-  !============================================================
-  !  for graphics
-  !============================================================
-  integer,parameter:: igxlen=640, igylen=480, igxmin=0, igymin=0 &
-       ,igxmid=igxlen/2, igymid=igylen/2, igxmax=igxlen-1, igymax=igylen-1 &
-       ,igcolp=4, igcolm=1
-  integer:: igw,iglen,igx0,igy0 &
-       ,igx(0:lmax-1), igy(0:lmax-1)
-  character*10 wname
-  integer::  igcol(-1:1)
-  data igcol/igcolm,0,igcolp/
+  real(kind=8):: sume,sumc,summ,sumx
+  real(kind=8):: rk,f,c,e
   !======================================================================-
   ! parameter nyuryoku
   !======================================================================-
   !   nyuryoku
   !==========================================================-
-  write(0,*) 'linear size?'
-  read (*,*) lsize
-  !
-  write(0,*) 'temperature?'
-  read (*,*) temp
-  !
-  write(0,*) 'initial configuration?'
-  write(0,*) ' -1: all down'
-  write(0,*) '  0: random'
-  write(0,*) '  1: all up'
-  read (*,*) inist
-  !
-  write(0,*) 'number of initial Monte Carlo steps?'
-  read (*,*) imcs
-  write(0,*) 'number of Monte Carlo steps per block?'
-  read (*,*) nmcs
-  write(0,*) 'number of blocks?'
-  read (*,*) nblock
-  !
-  write(0,*) 'seed of random numbers (odd positive integer)?'
-  read (*,*) iseed
+  !write(0,*) 'linear size?'
+  !read (*,*) lsize
+  !!
+  !write(0,*) 'temperature?'
+  !read (*,*) temp
+  !!
+  !write(0,*) 'initial configuration?'
+  !write(0,*) ' -1: all down'
+  !write(0,*) '  0: random'
+  !write(0,*) '  1: all up'
+  !read (*,*) inist
+  !!
+  !write(0,*) 'number of initial Monte Carlo steps?'
+  !read (*,*) imcs
+  !write(0,*) 'number of Monte Carlo steps per block?'
+  !read (*,*) nmcs
+  !write(0,*) 'number of blocks?'
+  !read (*,*) nblock
+  !!
+  !write(0,*) 'seed of random numbers (odd positive integer)?'
+  !read (*,*) iseed
+  lsize = 8
+  temp = 3.0
+  inist = 0
+  imcs = 10000
+  nmcs = 10000
+  nblock = 10
+  
+  !do j=1, 300
+  !iseed = 1+2*j
+  iseed = 601
   !==========================================================-
   !   kensa
   !==========================================================-
@@ -83,13 +84,13 @@ program ising
   !==========================================================-
   !   shutsuryoku
   !==========================================================-
-  write(*,'(a10,i12)')    '   lsize= ',lsize
-  write(*,'(a10,e24.16)') '    temp= ',temp
-  write(*,'(a10,i12)')    '   inist= ',inist
-  write(*,'(a10,i12)')    '    imcs= ',imcs
-  write(*,'(a10,i12)')    '    nmcs= ',nmcs
-  write(*,'(a10,i12)')    '  nblock= ',nblock
-  write(*,'(a10,i12)')    '   iseed= ',iseed
+  !write(*,'(a10,i12)')    '   lsize= ',lsize
+  !write(*,'(a10,e24.16)') '    temp= ',temp
+  !write(*,'(a10,i12)')    '   inist= ',inist
+  !write(*,'(a10,i12)')    '    imcs= ',imcs
+  !write(*,'(a10,i12)')    '    nmcs= ',nmcs
+  !write(*,'(a10,i12)')    '  nblock= ',nblock
+  !write(*,'(a10,i12)')    '   iseed= ',iseed
   !======================================================================-
   ! shokisettei
   !======================================================================-
@@ -137,32 +138,6 @@ program ising
       trprob(n)=1.0d0
     endif
   enddo
-  !==========================================================-
-  !  for graphics
-  !==========================================================-
-  igw=igylen/lsize
-  if(igw.le.0) then
-    write(*,*) 'error: lsize =',lsize,' > ',igylen
-    stop
-  endif
-  iglen=igw*lsize
-  igx0=igxmid-iglen/2
-  igy0=igymid+iglen/2
-  do ix=0,lsize1
-    igx(ix)=igx0+igw*ix
-  enddo
-  do iy=0,lsize1
-    igy(iy)=igy0-igw*(iy+1)
-  enddo
-  wname(1:5)='ising'
-  call ginit(wname)
-  call gcls
-  do ix=0,lsize1
-    do iy=0,lsize1
-      call gbox(igx(ix),igy(iy),igw,igw,igcol(ispin(ix,iy)))
-    enddo
-  enddo
-  call gdisp
   !======================================================================-
   ! shoki loop
   !======================================================================-
@@ -180,15 +155,13 @@ program ising
       call rndu(rnd)
       if(rnd.lt.trprob(ie)) then
         ispin(ix,iy)=-ispin(ix,iy)
-        call gbox(igx(ix),igy(iy),igw,igw,igcol(ispin(ix,iy)))
-        !            call gdisp
       endif
     enddo
-    call gdisp
   enddo
   !======================================================================-
   ! block loop
   !======================================================================-
+  sume=0;sumc=0;summ=0;sumx=0;
   do nb=1,nblock
     !==========================================================-
     !   block-wa shokika
@@ -214,11 +187,8 @@ program ising
         call rndu(rnd)
         if(rnd.lt.trprob(ie)) then
           ispin(ix,iy)=-ispin(ix,iy)
-          call gbox(igx(ix),igy(iy),igw,igw,igcol(ispin(ix,iy)))
-          !              call gdisp
         endif
       enddo
-      call gdisp
       !==============================================-
       !     sokutei
       !==============================================-
@@ -245,22 +215,41 @@ program ising
     aene2=aene2/dble(nmcs)
     amag =amag /dble(nmcs)
     amag2=amag2/dble(nmcs)
-    write(*,'(a10,i12)')    '   block= ',nb
-    write(*,'(a10,e24.16)') '    aene= ',aene
-    write(*,'(a10,e24.16)') '   aene2= ',aene2
-    write(*,'(a10,e24.16)') '    amag= ',amag
-    write(*,'(a10,e24.16)') '   amag2= ',amag2
+    !write(*,'(a10,i12)')    '   block= ',nb
+    !write(*,'(a10,e24.16)') '    aene= ',aene
+    !write(*,'(a10,e24.16)') '   aene2= ',aene2
+    !write(*,'(a10,e24.16)') '    amag= ',amag
+    !write(*,'(a10,e24.16)') '   amag2= ',amag2
     dene =aene2-aene*aene
     ave  =-aene/dble(no)
     avc  =(dene/dble(no))/(temp*temp)
     dmag =amag2-amag*amag
     avm  =amag/dble(no)
     avx  =dmag/dble(no)
-    write(*,'(a10,e24.16)') '       e= ',ave
-    write(*,'(a10,e24.16)') '       c= ',avc
-    write(*,'(a10,e24.16)') '       m= ',avm
-    write(*,'(a10,e24.16)') '       x= ',avx
+    !write(*,'(a10,e24.16)') '       e= ',ave
+    !write(*,'(a10,e24.16)') '       c= ',avc
+    !write(*,'(a10,e24.16)') '       m= ',avm
+    !write(*,'(a10,e24.16)') '       x= ',avx
+    sume = sume + ave
+    sumc = sumc + avc
+    summ = summ + avm
+    sumx = sumx + avx
   enddo
+  sume = sume / nblock
+  sumc = sumc / nblock
+  summ = summ / nblock
+  sumx = sumx / nblock
+  !write(*,'(a10,e24.16)') '       e= ',sume
+  !write(*,'(a10,e24.16)') '       c= ',sumc
+  !write(*,'(a10,e24.16)') '       m= ',summ
+  !write(*,'(a10,e24.16)') '       x= ',sumx
+
+  !write(*,'(i0, e24.16)') 1+2*j, sume
+
+  rk=1.0d0/temp
+  call calc(lsize,rk,f,e,c)
+  write(*,'(e24.16,e24.16,e24.16,e24.16,e24.16)') temp, sume, sumc, e, c
+  !end do
   !
   stop
 end program ising
