@@ -45,7 +45,7 @@ program ising
   !write(0,*) 'seed of random numbers (odd positive integer)?'
   !read (*,*) iseed
   lsize = 8
-  temp = 3.0
+  temp = 2.3
   inist = 0
   imcs = 10000
   nmcs = 10000
@@ -227,7 +227,7 @@ program ising
     avm  =amag/dble(no)
     avx  =dmag/dble(no)
     !write(*,'(a10,e24.16)') '       e= ',ave
-    !write(*,'(a10,e24.16)') '       c= ',avc
+    write(*,'(a10,e24.16)') '       c= ',avc
     !write(*,'(a10,e24.16)') '       m= ',avm
     !write(*,'(a10,e24.16)') '       x= ',avx
     sume = sume + ave
@@ -246,9 +246,9 @@ program ising
 
   !write(*,'(i0, e24.16)') 1+2*j, sume
 
-  rk=1.0d0/temp
-  call calc(lsize,rk,f,e,c)
-  write(*,'(e24.16,e24.16,e24.16,e24.16,e24.16)') temp, sume, sumc, e, c
+  !rk=1.0d0/temp
+  !call calc(lsize,rk,f,e,c)
+  !write(*,'(e24.16,e24.16,e24.16,e24.16,e24.16)') temp, sume, sumc, e, c
   !end do
   !
   stop

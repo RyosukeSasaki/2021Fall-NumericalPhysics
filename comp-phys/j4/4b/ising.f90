@@ -45,7 +45,7 @@ program ising
   !!
   !write(0,*) 'seed of random numbers (odd positive integer)?'
   !read (*,*) iseed
-  lsize = 8
+  lsize = 16
   temp = 4.0
   inist = 0
   imcs = 10000
@@ -117,10 +117,10 @@ program ising
       endif
     enddo
   enddo
+  !==========================================================-
+  !   sen'i-kakuritsu shokika
+  !==========================================================-
   do while (temp>=0d0)
-    !==========================================================-
-    !   sen'i-kakuritsu shokika
-    !==========================================================-
     do n=-nnno,nnno
       de=2.0d0*dble(n)/temp
       if(de.gt.0.0d0) then
@@ -207,21 +207,12 @@ program ising
       aene2=aene2/dble(nmcs)
       amag =amag /dble(nmcs)
       amag2=amag2/dble(nmcs)
-      !write(*,'(a10,i12)')    '   block= ',nb
-      !write(*,'(a10,ES24.16)') '    aene= ',aene
-      !write(*,'(a10,ES24.16)') '   aene2= ',aene2
-      !write(*,'(a10,ES24.16)') '    amag= ',amag
-      !write(*,'(a10,ES24.16)') '   amag2= ',amag2
       dene =aene2-aene*aene
       ave  =-aene/dble(no)
       avc  =(dene/dble(no))/(temp*temp)
       dmag =amag2-amag*amag
       avm  =amag/dble(no)
       avx  =dmag/dble(no)
-      !write(*,'(a10,ES24.16)') '       e= ',ave
-      !write(*,'(a10,ES24.16)') '       c= ',avc
-      !write(*,'(a10,ES24.16)') '       m= ',avm
-      !write(*,'(a10,ES24.16)') '       x= ',avx
       sume = sume + ave
       sumc = sumc + avc
       summ = summ + avm
@@ -247,14 +238,5 @@ program ising
     summ,summ2,sumx,sumx2
     temp = temp - 0.1d0
   end do
-  !write(*,'(a10,ES24.16,ES24.16)') '       e= ',sume,sume2
-  !write(*,'(a10,ES24.16,ES24.16)') '       c= ',sumc,sumc2
-  !write(*,'(a10,ES24.16,ES24.16)') '       m= ',summ,summ2
-  !write(*,'(a10,ES24.16,ES24.16)') '       x= ',sumx,sumx2
-
-  !rk=1.0d0/temp
-  !call calc(lsize,rk,f,e,c)
-  !write(*,'(ES24.16,ES24.16,ES24.16,ES24.16,ES24.16)') temp, sume, sumc, e, c
-  !
   stop
 end program ising
