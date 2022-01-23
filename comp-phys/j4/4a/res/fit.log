@@ -1,0 +1,259 @@
+
+
+*******************************************************************************
+Sun Jan  9 17:50:39 2022
+
+
+FIT:    data read from "entropy.dat"
+        format = z
+        x range restricted to [0.00000 : 601.000]
+        #datapoints = 300
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x+b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 7.8804640309e-01   0.00e+00  1.34e+00    4.000000e-07  -1.900000e+00
+   6 5.6121430794e-05  -8.58e-02  1.34e-06    6.145208e-08  -1.951148e+00
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 5.61214e-05
+rel. change during last iteration : -8.57679e-07
+
+degrees of freedom    (FIT_NDF)                        : 298
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000433967
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.88327e-07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.14521e-08      +/- 1.447e-07    (235.4%)
+b               = -1.95115         +/- 5.036e-05    (0.002581%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.867  1.000 
+
+
+*******************************************************************************
+Sun Jan  9 17:51:12 2022
+
+
+FIT:    data read from "entropy.dat"
+        format = z
+        x range restricted to [0.00000 : 601.000]
+        #datapoints = 300
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x+b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 7.8804640309e-01   0.00e+00  1.34e+00    4.000000e-07  -1.900000e+00
+   6 5.6121430794e-05  -8.58e-02  1.34e-06    6.145208e-08  -1.951148e+00
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 5.61214e-05
+rel. change during last iteration : -8.57679e-07
+
+degrees of freedom    (FIT_NDF)                        : 298
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000433967
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.88327e-07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.14521e-08      +/- 1.447e-07    (235.4%)
+b               = -1.95115         +/- 5.036e-05    (0.002581%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.867  1.000 
+
+
+*******************************************************************************
+Sun Jan  9 17:51:35 2022
+
+
+FIT:    data read from "entropy.dat"
+        format = z
+        x range restricted to [0.00000 : 601.000]
+        #datapoints = 300
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x+b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 7.8804640309e-01   0.00e+00  1.34e+00    4.000000e-07  -1.900000e+00
+   6 5.6121430794e-05  -8.58e-02  1.34e-06    6.145208e-08  -1.951148e+00
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 5.61214e-05
+rel. change during last iteration : -8.57679e-07
+
+degrees of freedom    (FIT_NDF)                        : 298
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000433967
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.88327e-07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.14521e-08      +/- 1.447e-07    (235.4%)
+b               = -1.95115         +/- 5.036e-05    (0.002581%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.867  1.000 
+
+
+*******************************************************************************
+Sun Jan  9 17:51:56 2022
+
+
+FIT:    data read from "entropy.dat"
+        format = z
+        x range restricted to [0.00000 : 601.000]
+        #datapoints = 300
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x+b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 7.8804640309e-01   0.00e+00  1.34e+00    4.000000e-07  -1.900000e+00
+   6 5.6121430794e-05  -8.58e-02  1.34e-06    6.145208e-08  -1.951148e+00
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 5.61214e-05
+rel. change during last iteration : -8.57679e-07
+
+degrees of freedom    (FIT_NDF)                        : 298
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000433967
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.88327e-07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.14521e-08      +/- 1.447e-07    (235.4%)
+b               = -1.95115         +/- 5.036e-05    (0.002581%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.867  1.000 
+
+
+*******************************************************************************
+Sun Jan  9 17:52:31 2022
+
+
+FIT:    data read from "entropy.dat"
+        format = z
+        x range restricted to [0.00000 : 601.000]
+        #datapoints = 300
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x+b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 7.8804640309e-01   0.00e+00  1.34e+00    4.000000e-07  -1.900000e+00
+   6 5.6121430794e-05  -8.58e-02  1.34e-06    6.145208e-08  -1.951148e+00
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 5.61214e-05
+rel. change during last iteration : -8.57679e-07
+
+degrees of freedom    (FIT_NDF)                        : 298
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000433967
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.88327e-07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.14521e-08      +/- 1.447e-07    (235.4%)
+b               = -1.95115         +/- 5.036e-05    (0.002581%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.867  1.000 
+
+
+*******************************************************************************
+Sun Jan  9 17:54:18 2022
+
+
+FIT:    data read from "entropy.dat"
+        format = z
+        x range restricted to [0.00000 : 601.000]
+        #datapoints = 300
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x+b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 7.8804640309e-01   0.00e+00  1.34e+00    4.000000e-07  -1.900000e+00
+   6 5.6121430794e-05  -8.58e-02  1.34e-06    6.145208e-08  -1.951148e+00
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 5.61214e-05
+rel. change during last iteration : -8.57679e-07
+
+degrees of freedom    (FIT_NDF)                        : 298
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000433967
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.88327e-07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.14521e-08      +/- 1.447e-07    (235.4%)
+b               = -1.95115         +/- 5.036e-05    (0.002581%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.867  1.000 
+
+
+*******************************************************************************
+Sun Jan  9 17:54:34 2022
+
+
+FIT:    data read from "entropy.dat"
+        format = z
+        x range restricted to [0.00000 : 601.000]
+        #datapoints = 300
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x+b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 7.8804640309e-01   0.00e+00  1.34e+00    4.000000e-07  -1.900000e+00
+   6 5.6121430794e-05  -8.58e-02  1.34e-06    6.145208e-08  -1.951148e+00
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 5.61214e-05
+rel. change during last iteration : -8.57679e-07
+
+degrees of freedom    (FIT_NDF)                        : 298
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.000433967
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.88327e-07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.14521e-08      +/- 1.447e-07    (235.4%)
+b               = -1.95115         +/- 5.036e-05    (0.002581%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.867  1.000 
